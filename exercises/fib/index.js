@@ -7,7 +7,57 @@
 // forms the first ten entries of the fibonacci series.
 // Example:
 //   fib(4) === 3
+/* function memoize(fn) {
+  const cache = {};
+  return function (...args) {
+    if (cache[args]) {
+      return cache[args];
+    }
 
-function fib(n) {}
+    const result = fn.apply(this, args);
+    cache[args] = result;
+
+    return result;
+  };
+}
+
+function slowFib(n) {
+  if (n < 2) {
+    return n;
+  }
+
+  return fib(n - 1) + fib(n - 2);
+}
+const fib = memoize(slowFib);
+ */
+function fib(n, control = 0, prev = 0, current = 1) {
+  control += 1;
+
+  if (n === control) {
+    return current;
+  }
+
+  return fib(n, control, current, current + prev);
+}
 
 module.exports = fib;
+
+/* function fib(n) {
+  let result = [0, 1];
+
+  for (let i = 1; i < n; i++) {
+    result.push(result[i - 1] + result[i]);
+  }
+
+  return result[result.length - 1];
+} */
+
+/* function fib(n, control = 0, prev = 0, current = 1) {
+  control += 1;
+
+  if (n === control) {
+    return current;
+  }
+
+  return fib(n, control, current, current + prev);
+} */
