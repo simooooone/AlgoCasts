@@ -40,6 +40,12 @@ function fib(n, control = 0, prev = 0, current = 1) {
   return fib(n, control, current, current + prev);
 }
 
+/* const fib_phi = (n) => {
+  let phi = (1 + Math.sqrt(5)) / 2.0;
+  let psi = (1 - Math.sqrt(5)) / 2.0;
+  return parseInt((phi ** (n + 1) - psi ** (n + 1)) / Math.sqrt(5));
+}; */
+
 module.exports = fib;
 
 /* function fib(n) {

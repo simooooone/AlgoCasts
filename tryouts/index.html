@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script>
+      class Node {
+        constructor(data, next = null) {
+          this.data = data;
+          this.next = next;
+        }
+      }
+
+      class LinkedList {
+        constructor(head) {
+          this.head = null;
+          this.size = 0;
+        }
+
+        insertFirst(data) {
+          this.head = new Node(data, this.head);
+          this.size++;
+        }
+
+        getFirst() {
+          return this.head;
+        }
+
+        getLast() {
+          let node = this.head;
+
+          while (node.next) {
+            node = node.next;
+          }
+
+          return node;
+        }
+
+        clear() {
+          this.head = null;
+          this.size = 0;
+        }
+
+        removeFirst() {
+          this.head = this.head.next;
+          this.size--;
+        }
+
+        removeLast() {
+          let node = this.head;
+
+          while (node.next.next) {
+            node = node.next;
+          }
+
+          node.next = null;
+
+          this.size--;
+        }
+
+        insertLast(data) {
+          let node = this.head;
+
+          while (node.next) {
+            node = node.next;
+          }
+
+          node.next = new Node(data);
+
+          this.size++;
+        }
+
+        getAt(n) {
+          let node = this.head;
+
+          for (let i = 1; i < n; i++) {
+            node = node.next;
+          }
+
+          return node;
+        }
+
+        removeAt(n) {
+          let node = this.head;
+
+          for (let i = 1; i < n - 1; i++) {
+            node = node.next;
+          }
+
+          node.next = node.next.next;
+          this.size--;
+        }
+      }
+      let ll = new LinkedList();
+      ll.insertFirst("First");
+      ll.insertFirst("Second");
+      ll.insertFirst("Third");
+      ll.insertLast("Zero");
+      console.log(ll.getAt(3));
+    </script>
+  </head>
+  <body></body>
+</html>
